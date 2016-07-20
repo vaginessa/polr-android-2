@@ -1,6 +1,6 @@
 package com.jgodha.android.pathofleastresistance;
 
-public class Cell {
+public class Cell implements Cloneable {
     private int rowIndex;
     private int columnIndex;
     private int value;
@@ -35,4 +35,8 @@ public class Cell {
         this.value = value;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

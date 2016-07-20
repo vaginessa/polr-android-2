@@ -12,7 +12,6 @@ public class PathTest {
     private Cell cell2;
     private Cell cell3;
 
-
     @Before
     public void setup() {
         cell1 = new Cell(2, 0, 5);
@@ -35,8 +34,8 @@ public class PathTest {
     }
 
     @Test
-    public void returnsScore() throws Exception {
-        assertThat(underTest.score(), is(10));
+    public void returnsCost() throws Exception {
+        assertThat(underTest.cost(), is(10));
     }
 
     @Test
@@ -46,8 +45,43 @@ public class PathTest {
         String result = underTest.generateResult();
         assertThat(result.startsWith("RESULT"), is(true));
         assertThat(result.contains("Complete: Yes"), is(true));
-        assertThat(result.contains("Score: 10"), is(true));
+        assertThat(result.contains("Cost: 10"), is(true));
         assertThat(result.contains("Rows visited: 3 1 2"), is(true));
+    }
 
+    @Test
+    public void doesADeepCopy() throws Exception {
+        underTest.setComplete(true);
+
+        Path copy = underTest.deepCopy();
+
+        assertThat(copy.isComplete(), is(underTest.isComplete()));
+        assertThat(copy.getCellsVisited(), is(underTest.getCellsVisited()));
+    }
+
+    @Test
+    public void comparesHigherWithAPathWithLowerCost() throws Exception {
+        Path toBeCompared = new Path();
+
+        assertThat(underTest.compareTo(toBeCompared), is(1));
+    }
+
+    @Test
+    public void comparesLowerWithAPathWithHigherCost() throws Exception {
+        Path toBeCompared = new Path();
+        toBeCompared.addCell(new Cell(0, 0, 9));
+        toBeCompared.addCell(new Cell(0, 1, 2));
+
+        assertThat(underTest.compareTo(toBeCompared), is(-1));
+    }
+
+    @Test
+    public void comparesTheSameWithAPathWithTheSameCost() throws Exception {
+        Path toBeCompared = new Path();
+        toBeCompared.addCell(cell1);
+        toBeCompared.addCell(cell2);
+        toBeCompared.addCell(cell3);
+
+        assertThat(underTest.compareTo(toBeCompared), is(0));
     }
 }

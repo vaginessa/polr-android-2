@@ -36,4 +36,8 @@ Rows visited: 1 2 3 4 4 5
 
 
 ## As an Android App
-TODO...
+The app has been developed in Android Studio 2.1.2 with Android 6.0 (API 23) SDK and Java 8 (jdk1.8.0_91). It has been tested with Nexus 5S API 23 emulator.
+To run the app, open the PathOfLeastResistance project in Android Studio and click Run (green arrow) in the Toolbar for the 'app' configuration.
+
+#Screenshots
+TODO

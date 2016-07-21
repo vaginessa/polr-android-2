@@ -41,3 +41,4 @@ To run the app, open the PathOfLeastResistance project in Android Studio and cli
 
 #Screenshots
 TODO
+[](app/src/main/res/screenshots/start_app.png)

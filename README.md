@@ -40,5 +40,7 @@ The app has been developed in Android Studio 2.1.2 with Android 6.0 (API 23) SDK
 To run the app, open the PathOfLeastResistance project in Android Studio and click Run (green arrow) in the Toolbar for the 'app' configuration.
 
 #Screenshots
-TODO
-[](app/src/main/res/screenshots/start_app.png)
+![start_app](https://github.com/jgodha/polr-android/blob/master/app/src/main/res/screenshots/start_app.png)
+![data_entry](https://github.com/jgodha/polr-android/blob/master/app/src/main/res/screenshots/data_entry.png)
+![click_go](https://github.com/jgodha/polr-android/blob/master/app/src/main/res/screenshots/click_go.png)
+![output](https://github.com/jgodha/polr-android/blob/master/app/src/main/res/screenshots/output.png)

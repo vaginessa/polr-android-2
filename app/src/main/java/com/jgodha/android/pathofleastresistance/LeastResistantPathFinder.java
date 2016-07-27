@@ -9,11 +9,11 @@ public class LeastResistantPathFinder {
     private LeastResistantPathDeterminer leastResistantPathDeterminer = new LeastResistantPathDeterminer();
 
 
-    public String find(String gridData) {
+    public Path find(String gridData) {
         Grid grid = inputParser.generateGrid(gridData);
         List<Path> paths = pathTraverser.traversePaths(grid);
         Path path = leastResistantPathDeterminer.determine(paths);
-        return path.generateResult();
+        return path;
     }
 
     public void setInputParser(InputParser inputParser) {

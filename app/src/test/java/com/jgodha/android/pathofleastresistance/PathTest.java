@@ -39,17 +39,6 @@ public class PathTest {
     }
 
     @Test
-    public void generatesResult() throws Exception {
-        underTest.setComplete(true);
-
-        String result = underTest.generateResult();
-        assertThat(result.startsWith("RESULT"), is(true));
-        assertThat(result.contains("Complete: Yes"), is(true));
-        assertThat(result.contains("Cost: 10"), is(true));
-        assertThat(result.contains("Rows visited: 3 1 2"), is(true));
-    }
-
-    @Test
     public void doesADeepCopy() throws Exception {
         underTest.setComplete(true);
 
@@ -83,5 +72,24 @@ public class PathTest {
         toBeCompared.addCell(cell3);
 
         assertThat(underTest.compareTo(toBeCompared), is(0));
+    }
+
+    @Test
+    public void generatesResult() throws Exception {
+        underTest.setComplete(true);
+
+        String result = underTest.generateResult();
+        assertThat(result.startsWith("RESULT"), is(true));
+        assertThat(result.contains("Complete: Yes"), is(true));
+        assertThat(result.contains("Cost: 10"), is(true));
+        assertThat(result.contains("Rows traversed: 3 1 2"), is(true));
+    }
+
+    @Test
+    public void returnsRowsTraversed() throws Exception {
+        underTest.setComplete(true);
+
+        String result = underTest.rowsTraversed();
+        assertThat(result, is("3 1 2"));
     }
 }

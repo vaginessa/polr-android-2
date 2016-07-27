@@ -18,7 +18,9 @@ public class PathOfLeastResistanceMain {
 
             for(String data : gridData) {
                 printGridData(data);
-                System.out.println(leastResistantPathFinder.find(data));
+                Path path = leastResistantPathFinder.find(data);
+                System.out.println();
+                System.out.println(path.generateResult());
                 System.out.println("\n");
             }
         }

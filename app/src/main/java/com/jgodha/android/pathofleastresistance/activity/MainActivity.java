@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jgodha.android.pathofleastresistance.LeastResistantPathFinder;
+import com.jgodha.android.pathofleastresistance.Path;
 import com.jgodha.android.pathofleastresistance.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         String gridData = ((EditText) findViewById(R.id.editText)).getText().toString();
         try {
-            resultView.setText(new LeastResistantPathFinder().find(gridData));
+            Path path = new LeastResistantPathFinder().find(gridData);
+            resultView.setText(path.generateResult());
             resultView.setBackgroundColor(Color.CYAN);
         } catch(Exception ex) {
-            resultView.setText("Something went wrong!");
+            resultView.setText("Something went wrong! Please try again.");
             resultView.setBackgroundColor(Color.RED);
         }
     }

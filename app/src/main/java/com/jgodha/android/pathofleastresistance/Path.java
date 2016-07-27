@@ -39,23 +39,6 @@ public class Path implements Comparable<Path> {
         return score;
     }
 
-    public String generateResult() {
-        StringBuilder sb = new StringBuilder("RESULT");
-        sb.append("\n");
-        sb.append("Complete: ");
-        sb.append(complete ? "Yes" : "No");
-        sb.append("\n");
-        sb.append("Cost: ");
-        sb.append(cost());
-        sb.append("\n");
-        sb.append("Rows visited: ");
-        for(Cell cell : cellsVisited) {
-            sb.append(cell.getRowIndex() + 1 + " ");
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
     public Path deepCopy() {
         Path copy = new Path();
         copy.setComplete(complete);
@@ -72,5 +55,28 @@ public class Path implements Comparable<Path> {
             return -1;
         }
         return 0;
+    }
+
+    public String generateResult() {
+        StringBuilder sb = new StringBuilder("RESULT");
+        sb.append("\n");
+        sb.append("Complete: ");
+        sb.append(complete ? "Yes" : "No");
+        sb.append("\n");
+        sb.append("Cost: ");
+        sb.append(cost());
+        sb.append("\n");
+        sb.append("Rows traversed: ");
+        sb.append(rowsTraversed());
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    public String rowsTraversed() {
+        StringBuilder rowsTraversed = new StringBuilder();
+        for(Cell cell : cellsVisited) {
+            rowsTraversed.append(cell.getRowIndex() + 1 + " ");
+        }
+        return rowsTraversed.toString().trim();
     }
 }

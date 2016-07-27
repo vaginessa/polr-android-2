@@ -10,7 +10,12 @@ public class InputParserTest {
     private InputParser underTest = new InputParser();
 
     @Test(expected = RuntimeException.class)
-    public void validatesThatTheInputGridDataIsNotBlank() throws Exception {
+    public void validatesThatTheInputGridDataIsNotNull() throws Exception {
+        underTest.generateGrid(null);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void validatesThatTheInputGridDataIsNotEmpty() throws Exception {
         underTest.generateGrid("");
     }
 

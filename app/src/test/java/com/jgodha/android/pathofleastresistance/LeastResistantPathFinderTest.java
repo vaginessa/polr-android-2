@@ -40,11 +40,10 @@ public class LeastResistantPathFinderTest {
         when(inputParser.generateGrid(gridData)).thenReturn(grid);
         when(pathTraverser.traversePaths(grid)).thenReturn(paths);
         when(leastResistantPathDeterminer.determine(paths)).thenReturn(path);
-        when(path.generateResult()).thenReturn(result);
     }
 
     @Test
     public void findsThePathWithTheLeastResistance() throws Exception {
-        assertThat(underTest.find(gridData), is(result));
+        assertThat(underTest.find(gridData), is(path));
     }
 }

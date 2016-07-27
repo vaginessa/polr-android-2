@@ -33,7 +33,7 @@ Complete: Yes
 Cost: 16
 Rows visited: 1 2 3 4 4 5
 ```
-If you do not provide any argument to the program, it will run through the data scenarios provided in the kata and display the results.
+**If you do not provide any argument to the program, it will run through the data scenarios provided in the kata and display the results.**
 
 ## As an Android App
 The app has been developed in Android Studio 2.1.2 with Android 6.0 (API 23) SDK and Java 8 (jdk1.8.0_91). It has been tested with Nexus 5S API 23 emulator.

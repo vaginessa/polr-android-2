@@ -1,26 +1,43 @@
 package com.jgodha.android.pathofleastresistance;
 
-import java.util.StringTokenizer;
-
 public class InputParser {
 
     public Grid generateGrid(String arg) {
+        validateInputIsNotBlank(arg);
         Grid grid = new Grid();
-        StringTokenizer rowTokenizer = new StringTokenizer(arg, "\n");
+        int numberOfColumns = 0;
         int rowIndex = 0;
-        while(rowTokenizer.hasMoreTokens()) {
+        String[] tokens = arg.split("\n");
+        for(String token : tokens) {
             Row row = new Row(rowIndex);
-            String rowToken = rowTokenizer.nextToken();
-            StringTokenizer columns = new StringTokenizer(rowToken,  " ");
-            int columnIndex = 0;
-            while(columns.hasMoreTokens()) {
-                String column = columns.nextToken();
-                row.addColumn(columnIndex, Integer.valueOf(column));
-                columnIndex++;
+            String[] cells = token.split(" ");
+            if(rowIndex == 0) {
+                numberOfColumns = cells.length;
+            } else {
+                if(cells.length != numberOfColumns) {
+                    throw new RuntimeException("Not all rows have the same number of columns");
+                } else {
+                    numberOfColumns = cells.length;
+                }
             }
+            int columnIndex = 0;
+            parseColumnsFoRow(row, cells, columnIndex);
             grid.addRow(row);
             rowIndex++;
         }
         return grid;
+    }
+
+    private void validateInputIsNotBlank(String arg) {
+        if(arg == null || arg.equals("")) {
+            throw new RuntimeException("Cannot parse blank input");
+        }
+    }
+
+    private void parseColumnsFoRow(Row row, String[] cells, int columnIndex) {
+        for(String cell : cells) {
+            row.addColumn(columnIndex, Integer.valueOf(cell));
+            columnIndex++;
+        }
     }
 }

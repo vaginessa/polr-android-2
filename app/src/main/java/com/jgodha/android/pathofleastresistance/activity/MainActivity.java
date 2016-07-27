@@ -28,12 +28,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doIt() {
+        TextView resultView = (TextView) findViewById(R.id.textView3);
+
         String gridData = ((EditText) findViewById(R.id.editText)).getText().toString();
-
-        String result = new LeastResistantPathFinder().find(gridData);
-
-        ((TextView)findViewById(R.id.textView3)).setText(result);
-        ((TextView)findViewById(R.id.textView3)).setBackgroundColor(Color.CYAN);
+        try {
+            resultView.setText(new LeastResistantPathFinder().find(gridData));
+            resultView.setBackgroundColor(Color.CYAN);
+        } catch(Exception ex) {
+            resultView.setText("Something went wrong!");
+            resultView.setBackgroundColor(Color.RED);
+        }
     }
-
 }

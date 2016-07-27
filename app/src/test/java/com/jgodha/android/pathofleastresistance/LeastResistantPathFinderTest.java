@@ -33,7 +33,6 @@ public class LeastResistantPathFinderTest {
     private Path path;
 
     private String gridData = "gridData";
-    private String result = "result";
 
     @Before
     public void init() {
